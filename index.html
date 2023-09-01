@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylezz.css" />
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <script>
+        // model
+        let headIndex = 3;
+        let bodyIndex = 0;
+        let legsIndex = 0;
+
+        // view
+        updateView();
+        function updateView() {
+            document.getElementById('container').innerHTML = /*HTML*/`
+                <div style="display: flex;" id="headButtons"> 
+                    <button onclick="changeHead(-1)">◀</button>
+                    <div><img src="img/head${headIndex}.png"/></div>
+                    <button onclick="changeHead(1)">▶</button>                                               
+                </div>
+                <div style="display: flex;" id="headButtons"> 
+                    <button onclick="changeBody(-1)">◀</button>
+                    <div><img src="img/body${bodyIndex}.png"/></div>
+                    <button onclick="changeBody(1)">▶</button>                                               
+                </div>
+                <div style="display: flex;" id="headButtons"> 
+                    <button onclick="changeLegs(-1)">◀</button>
+                    <div><img src="img/legs${legsIndex}.png"/></div>
+                    <button onclick="changeLegs(1)">▶</button>                                               
+                </div>
+            `;
+        }
+
+        // controller
+        function changeHead(change) {
+            headIndex--;
+            if (headIndex == -1) headIndex = 3;
+            if (headIndex == 4) headIndex = 0;
+            // headIndex = (headIndex + change + 4) % 4;
+            updateView();
+        }
+
+        function changeBody(change) {
+            bodyIndex--;
+            if (bodyIndex == -1) bodyIndex = 3;
+            if (bodyIndex == 4) bodyIndex = 0;
+            // bodyIndex = (bodyIndex + change + 4) % 4;
+            updateView();
+        }
+
+        function changeLegs(change) {
+            legsIndex--;
+            if (legsIndex == -1) legsIndex = 3;
+            if (legsIndex == 4) legsIndex = 0;
+            // legsIndex = (legsIndex + change + 4) % 4;
+            updateView();
+        }
+
+    </script>
+    </div>
+</body>
+
+</html>
